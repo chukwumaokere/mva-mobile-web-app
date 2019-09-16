@@ -1,0 +1,98 @@
+
+  <!--   <div class="row">
+        <div class="modal-body mx-3">
+          <div class="d-flex justify-content-center">
+          <button class="btn btn-default btn-login" onclick="login();">Login</button>
+        </div>
+
+          <div class="md-form mb-4 " style="text-align: center;">
+            <span>OR</span>
+          </div>
+
+          <div class="md-form mb-4">
+            <input type="text" id="barcodenumber" class="form-control validate">
+          </div>
+
+
+    </div> -->
+<div class="col-12 center-h">
+	<span class="navbar-brand ng-binding navbar_p_spacing">Scan the Sample Barcode</span>
+</div>
+<div class="row  vertical-align">
+	<video class="col-12" id="previewsample"> </video>
+	<!-- <button class="btn btn-default btn-login" onclick="scanassetnumebr();">Scan Sample Barcode Number</button> -->
+</div>
+<div class="dark white-text barcode_division">
+    <div class="row  vertical-align">
+        <div class="col-12 center-h md-form mb-4 br_code_space">
+        	<input type="text" id="barcodenumber" placeholder="Type you Barcode Number" class="form-control validate">
+        </div>
+    </div>
+    <div class="row  vertical-align">
+    	<div class="col-12 center-h mrg_bottom_submit">
+            <button type="button" onclick="displayMsg()" class="btn btn-default btn-login">Scan</button>
+        	<button class="btn btn-default btn-login" onclick="scansample();">Submit</button>
+    	</div>
+    </div>
+	<div class="modal fade" id="createsample" role="dialog">
+	    <div class="modal-dialog">
+	        <div class="modal-content">
+	            <div class="modal-header">
+	              Create Your Sample
+	              <button type="button" class="close" data-dismiss="modal">&times;</button>
+	            </div>
+	            <div class="modal-body">
+	                <form id="createCustomFieldForm">
+	                    <table id="creditcarddetails" class="table">
+	                        <tr>
+	                            <td>Sample ID</td>
+	                            <td colspan="2">
+	                                <input type="text" class="form-control" id="sampleid" name="sampleid">
+	                                <label style="display: none;" id = 'lbl_sampleid' class="lablerequired">The Sample ID is required</label>
+	                            </td>
+	                        </tr>
+	                        <tr>
+	                            <td>Status</td>
+	                            <td>
+	                                <select name="cf_1089" tabindex="" class="custom-select custom-select-sm">
+	                                	<option value="Samples Not Analyzed"> Samples Not Analyzed</option>
+										<option value="In Progress">In Progress</option>
+										<option value="Sent to 3rd Party Lab">Sent to 3rd Party Lab</option>
+										<option value="All Tests Are Complete">All Tests Are Complete</option>
+										<option value="Results Released">Results Released</option>
+									</select>
+	                            </td>
+	                        </tr>
+	                        <tr>
+	                            <td>Sample Tech</td>
+	                            <td colspan="2">
+	                                <input type="text" value="" class="form-control" id="cf_1227" name="cf_1227">
+	                            </td>
+	                        </tr>
+	                    </table>
+	                </form>
+	            </div>
+	            <div class="modal-footer">
+	                <button name="saveButton" onclick="savesample()" id="savesample" class="btn btn-default btn-login">Save</button>
+	            </div>
+	         </div>
+	    </div>
+	</div>
+	<div class="modal fade" id="samplealert" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					Sample status
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<div class="modal-body">
+					<p id = "samplemsg">Your Sample is found.</p>
+				</div>
+				<div class="modal-footer">
+		          	<button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
+		        </div>
+			</div>
+		</div>
+	</div>
+</div>
+

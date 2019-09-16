@@ -1,0 +1,155 @@
+
+  <!--   <div class="row">
+        <div class="modal-body mx-3">
+          <div class="d-flex justify-content-center">
+          <button class="btn btn-default btn-login" onclick="login();">Login</button>
+        </div>
+
+          <div class="md-form mb-4 " style="text-align: center;">
+            <span>OR</span>
+          </div>
+
+          <div class="md-form mb-4">
+            <input type="text" id="barcodenumber" class="form-control validate">
+          </div>
+
+
+    </div> -->
+<div class="col-12 center-h">
+	<span class="navbar-brand ng-binding navbar_p_spacing">Scan the Asset Barcode</span>
+</div>
+<div class="row  vertical-align">
+	<video class="col-12" id="preview"> </video>
+</div>
+<div class="dark white-text barcode_division">
+    <div class="row  vertical-align">
+    </div>
+    <div class="row  vertical-align">
+        <div class="col-12 center-h md-form mb-4 br_code_space">
+        	<input type="text" id="barcodenumberasset" placeholder="Type you Barcode Number" class="form-control validate">
+        </div>
+    </div>
+    <div class="row  vertical-align">
+    	<div class="col-12 center-h mrg_bottom_submit">
+        	<button class="btn btn-default btn-login" onclick="scanasset();">Submit</button>
+        	<!-- <a class="btn btn-default btn-login" href="">Submit</a> -->
+    	</div>
+    </div>
+</div>
+
+<div class="dark white-text">
+    <div class="row  vertical-align">
+    </div>
+    <div class="row  vertical-align">
+        <div class="col-12 center-h md-form mb-4 br_code_space">
+        	<span class="navbar-brand ng-binding navbar_p_spacing">Assets List</span>
+        </div>
+    </div>
+    <div class="row  vertical-align">
+    	<div class="col-12 mrg_bottom_submit">
+    		<div class="holder">
+	        	<div class="col-12 center-h mrg_bottom_submit">
+	        		<input type="hidden" name="assetcount" value="{{$ctrl.assetcount}}">
+	        		<button id = "createassetbtn" class="btn btn-default btn-login {{$ctrl.assetbutton}}" onclick="createasset();">Item Not Found? Create New Asset</button>
+	        	</div>
+	        	<a href="" class="dark white-text barcode_division asset-list" ng-repeat="asset in $ctrl.assetsentries" >
+			        <div class="row asset-list-item">
+			            <div class="col-5">
+			                <strong class="bolder asset-list-title">Serial Number: </strong>
+			            </div>
+			            <div class="col-6 asset-list-value">
+			                {{asset.assetname}}
+			            </div>
+			        </div>
+			        <div class="row asset-list-item">
+			            <div class="col-5">
+			                <strong class="bolder asset-list-title">Unit ID: </strong>
+			            </div>
+			            <div class="col-6 asset-list-value">
+			                {{asset.cf_1164}}
+			            </div>
+			        </div>
+			        <div class="row asset-list-item">
+			            <div class="col-5">
+			                <strong class="bolder asset-list-title">Equipment type: </strong>
+			            </div>
+			            <div class="col-6 asset-list-value">
+			                {{asset.cf_922}}
+			            </div>
+			            <div class="col-1 right-arrow">
+			                <i class="fas fa-chevron-right"></i>
+			            </div>
+			        </div>
+			        <div class="row asset-list-item">
+			            <div class="col-5">
+			                <strong class="bolder asset-list-title">Substation Name: </strong>
+			            </div>
+			            <div class="col-6 asset-list-value">
+			                {{asset.multiaddressid}}
+			            </div>
+			        </div>
+			    </a>
+			</div>
+    	</div>
+    </div>
+</div>
+
+<div class="modal fade" id="createasset" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+              Create Your Asset
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="createCustomFieldForm">
+                    <table id="creditcarddetails" class="table">
+                        <tr>
+                            <td>Serial Number</td>
+                            <td colspan="2">
+                                <input type="text" class="form-control" id="serialnumber" name="serialnumber">
+                                <label style="display: none;" id = 'lbl_serialnumber' class="lablerequired">The Serial Number is required</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Status</td>
+                            <td>
+                                <select name="assetstatus" tabindex="" class="custom-select custom-select-sm">
+                                	<option value="In Service"> In Service</option>
+									<option value="Out-of-service">Out-of-service</option>
+								</select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Client Code</td>
+                            <td colspan="2">
+                                <input type="text" value="" class="form-control" id="clientcode" name="clientcode">
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button name="saveButton" onclick="saveasset()" id="saveasset" class="btn btn-default btn-login">Save</button>
+            </div>
+         </div>
+    </div>
+</div>
+<div class="modal fade" id="assetfound" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				Asset status
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+			</div>
+			<div class="modal-body">
+				<p id = "assetmsg">Your Asset is found.</p>
+			</div>
+			<div class="modal-footer">
+	          	<button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
+	        </div>
+		</div>
+	</div>
+</div>
+
+
